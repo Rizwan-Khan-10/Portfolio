@@ -93,7 +93,7 @@ function Header() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white dark:bg-neutral-900 overflow-hidden"
+            className="md:hidden overflow-hidden"
           >
             <div className="container mx-auto pt-6 flex flex-col gap-6">
               {links.map((link, i) => (
