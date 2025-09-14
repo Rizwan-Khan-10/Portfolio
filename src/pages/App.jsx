@@ -41,7 +41,7 @@ function FloatingIconsBG() {
   }, [isDark]);
 
   return (
-    <div className="absolute inset-0 -z-10 w-full h-full bg-gray-100 dark:bg-neutral-950 overflow-hidden">
+    <div className="fixed inset-0 -z-10 w-full h-full bg-gray-100 dark:bg-neutral-950 overflow-hidden">
       {icons(isDark).map(({ Icon, color, top, left }, i) => (
         <motion.div
           key={i}
@@ -67,15 +67,13 @@ function FloatingIconsBG() {
 
 export default function App() {
   return (
-    <div className="relative w-full min-h-screen text-white bg-gray-100 dark:bg-neutral-950">
+    <div className="relative w-full min-h-screen text-white">
       <FloatingIconsBG />
-      <div className="relative">
-        <Header />
-        <About />
-        <Skill />
-        <Project />
-        <Contact />
-      </div>
+      <Header />
+      <About />
+      <Skill />
+      <Project />
+      <Contact />
     </div>
   );
 }
