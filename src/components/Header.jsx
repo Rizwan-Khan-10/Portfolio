@@ -12,7 +12,7 @@ function Header() {
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#contact" },
-    { name: "Resume", href: "/resume.pdf", download: true },
+    { name: "Resume", href: "public/resume.pdf", download: true },
   ];
 
   const handleLinkClick = () => {

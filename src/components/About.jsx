@@ -37,7 +37,7 @@ export default function About() {
                 <p className="text-xl md:text-3xl font-medium mb-6">
                     Full Stack Developer
                 </p>
-                <div className="flex items-center gap-6 text-2xl md:text-3xl">
+                <div className="flex items-center gap-6 text-3xl md:text-4xl">
                     <span className="text-base md:text-lg">Quick Connect:</span>
                     <a
                         href="https://github.com/Rizwan-Khan-10"

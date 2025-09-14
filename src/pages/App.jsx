@@ -69,7 +69,7 @@ export default function App() {
   return (
     <div className="relative w-full min-h-screen text-white">
       <FloatingIconsBG />
-      <div className="relative z-10">
+      <div className="relative">
         <Header />
         <About />
         <Skill />
