@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Baloo Bhai 2", sans-serif;
+}
