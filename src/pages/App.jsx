@@ -3,7 +3,7 @@ import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaJava } from "react-icons
 import { SiExpress, SiMongodb, SiMysql, SiPostgresql, SiTailwindcss, SiBootstrap, SiRedux, SiGit, SiGithub, SiVercel, SiNetlify, SiC, SiCplusplus, SiPython, SiFramer } from "react-icons/si";
 import useThemeStore from "../store/theme";
 import { useEffect } from "react";
-import { Header, About, Skill, Project,Contact } from "../components/index";
+import { Header, About, Skill, Project, Contact } from "../components/index";
 
 const icons = (isDark) => [
   { Icon: FaHtml5, color: "#e34f26", top: "15%", left: "8%" },
@@ -41,7 +41,7 @@ function FloatingIconsBG() {
   }, [isDark]);
 
   return (
-    <div className="absolute top-0 left-0 inset-0 -z-10 bg-gray-100 dark:bg-neutral-950 overflow-hidden">
+    <div className="absolute inset-0 -z-10 bg-gray-100 dark:bg-neutral-950 overflow-hidden" style={{ height: "var(--vh)" }}>
       {icons(isDark).map(({ Icon, color, top, left }, i) => (
         <motion.div
           key={i}

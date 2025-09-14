@@ -7,3 +7,12 @@ html {
   scroll-behavior: smooth;
   font-family: "Baloo Bhai 2", sans-serif;
 }
+
+:root {
+  --vh: 100%;
+}
+@media (max-width: 768px) {
+  :root {
+    --vh: 100vh;
+  }
+}
