@@ -41,7 +41,7 @@ function FloatingIconsBG() {
   }, [isDark]);
 
   return (
-    <div className="fixed inset-0 -z-10 bg-gray-100 dark:bg-neutral-950 overflow-hidden">
+    <div className="absolute top-0 left-0 inset-0 -z-10 bg-gray-100 dark:bg-neutral-950 overflow-hidden">
       {icons(isDark).map(({ Icon, color, top, left }, i) => (
         <motion.div
           key={i}
