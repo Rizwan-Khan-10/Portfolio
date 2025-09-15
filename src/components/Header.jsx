@@ -78,7 +78,7 @@ function Header() {
               <a
                 href={link.href}
                 className="hover:text-blue-500 transition-colors flex items-center"
-                onClick={(e) => handleLinkClick(e, link.href)}
+                onClick={(e) => handleLinkClick(e, link.href, link.download)}
                 {...(link.download && { download: true })}
               >
                 {link.name}
@@ -137,7 +137,7 @@ function Header() {
                   <a
                     href={link.href}
                     className="hover:text-blue-500 transition-colors flex items-center text-lg font-semibold py-2"
-                    onClick={(e) => handleLinkClick(e, link.href)}
+                    onClick={(e) => handleLinkClick(e, link.href, link.download)}
                     {...(link.download && { download: true })}
                   >
                     {link.name}
