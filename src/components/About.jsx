@@ -1,24 +1,16 @@
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { motion, useInView } from "motion/react";
+import { motion } from "motion/react";
 import avatar from "../assets/avatar.jpg";
-import { useRef } from "react";
 
 export default function About() {
-  const leftRef = useRef(null);
-  const rightRef = useRef(null);
-
-  const isLeftInView = useInView(leftRef, { amount: 0.75, once: false });
-  const isRightInView = useInView(rightRef, { amount: 0.9, once: false });
-
   return (
     <section
       id="about"
       className="h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-20 text-black dark:text-white gap-12 bg-transparent"
     >
       <motion.div
-        ref={leftRef}
         initial={{ opacity: 0, x: -40 }}
-        animate={isLeftInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
+        whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
         className="flex flex-col items-center w-full md:w-1/2"
       >
@@ -33,9 +25,8 @@ export default function About() {
       </motion.div>
 
       <motion.div
-        ref={rightRef}
-        initial={{ opacity: 0, x: 40 }}
-        animate={isRightInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 40 }}
+        initial={{ opacity: 0, x: -40 }}
+        whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
         className="w-full md:w-1/2 text-left"
       >

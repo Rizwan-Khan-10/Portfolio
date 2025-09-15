@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, AnimatePresence, useInView } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import vs from '../assets/vs.png';
 import {
     FaHtml5,
@@ -28,15 +28,10 @@ import {
     SiC
 } from "react-icons/si";
 import useThemeStore from "../store/theme";
-import { useRef } from "react";
 
 export default function Skills() {
     const { isDark } = useThemeStore();
     const [activeTab, setActiveTab] = useState("frontend");
-    const topRef = useRef(null);
-    const bottomRef = useRef(null);
-    const isTopInView = useInView(topRef, { amount: 0.4, once: false });
-    const isBottomInView = useInView(bottomRef, { amount: 0.4, once: false });
 
     const skillsData = {
         frontend: [
@@ -78,9 +73,8 @@ export default function Skills() {
             className="w-full flex flex-col items-center justify-center px-6 md:px-20 text-black dark:text-white pb-20"
         >
             <motion.div
-                ref={topRef}
                 initial={{ opacity: 0, y: -50 }}
-                animate={isTopInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 className="flex flex-col justify-center items-center">
                 <h2 className="text-4xl md:text-6xl font-bold mb-12 text-black dark:text-white drop-shadow-lg">
@@ -105,10 +99,9 @@ export default function Skills() {
 
             <AnimatePresence mode="wait">
                 <motion.div
-                    ref={bottomRef}
                     key={activeTab}
                     initial={{ opacity: 0, y: 50 }}
-                    animate={isBottomInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                     className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10"
                 >
