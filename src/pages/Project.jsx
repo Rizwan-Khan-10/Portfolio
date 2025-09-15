@@ -120,7 +120,11 @@ function Project() {
           </button>
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
-              <div className="relative w-full rounded-xl overflow-hidden shadow-lg flex items-center justify-center border border-black dark:border-white">
+              <motion.div
+                initial={{ opacity: 0, y: -50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="relative w-full rounded-xl overflow-hidden shadow-lg flex items-center justify-center border border-black dark:border-white">
                 <img
                   src={project.img[currentImageIndex]}
                   alt={`${project.name} - ${currentImageIndex + 1}`}
@@ -148,15 +152,23 @@ function Project() {
                     </button>
                   </>
                 )}
-              </div>
+              </motion.div>
 
-              <div className="flex flex-col gap-6">
+              <motion.div
+                initial={{ opacity: 0, y: -50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="flex flex-col gap-6">
                 <h1 className="text-4xl md:text-5xl font-bold drop-shadow-lg">{project.name}</h1>
                 <p className="text-lg">{project.description}</p>
-              </div>
+              </motion.div>
             </div>
 
-            <div className="bg-white dark:bg-neutral-950 rounded-xl p-8 shadow-inner flex flex-col gap-6 border border-black dark:border-white">
+            <motion.div
+              initial={{ opacity: 0, y: -50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-white dark:bg-neutral-950 rounded-xl p-8 shadow-inner flex flex-col gap-6 border border-black dark:border-white">
               {project.links && (
                 <div className="border-b pb-4">
                   <h2 className="text-2xl font-bold mb-4">Links</h2>
@@ -224,7 +236,7 @@ function Project() {
                   </ul>
                 </div>
               )}
-            </div>
+            </motion.div>
           </div>
 
           {showModal && (

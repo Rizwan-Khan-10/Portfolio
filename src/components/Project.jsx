@@ -1,5 +1,6 @@
 import projectData from '../assets/index';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'motion/react';
 
 function Project() {
     const navigate = useNavigate();
@@ -12,7 +13,10 @@ function Project() {
 
             <div className="flex flex-wrap justify-center gap-10 max-w-6xl mx-auto">
                 {projectData.map((project) => (
-                    <div
+                    <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
                         key={project.id}
                         className="w-full sm:w-80 bg-gray-100 dark:bg-neutral-950 border border-black dark:border-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer"
                         onClick={() => navigate(`/project?id=${project.id}`)}
@@ -34,7 +38,7 @@ function Project() {
                                 <span className='font-semibold'>Description:</span> {project.description}
                             </p>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </section>

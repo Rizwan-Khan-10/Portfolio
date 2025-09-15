@@ -1,11 +1,16 @@
 import { useState } from "react";
+import { motion } from 'motion/react';
 
 export default function Contact() {
   const [formStatus, setFormStatus] = useState("");
 
   return (
     <section id="contact" className="px-6 py-16 text-black dark:text-white">
-      <div className="max-w-md w-full mx-auto">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="max-w-md w-full mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-10">
           Contact Me
         </h2>
@@ -77,7 +82,7 @@ export default function Contact() {
             <p className="text-green-500 text-center mt-3">{formStatus}</p>
           )}
         </form>
-      </div>
+      </motion.div>
     </section>
   );
 }

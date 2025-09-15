@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useInView } from "motion/react";
 import vs from '../assets/vs.png';
 import {
     FaHtml5,
@@ -28,10 +28,15 @@ import {
     SiC
 } from "react-icons/si";
 import useThemeStore from "../store/theme";
+import { useRef } from "react";
 
 export default function Skills() {
     const { isDark } = useThemeStore();
     const [activeTab, setActiveTab] = useState("frontend");
+    const topRef = useRef(null);
+    const bottomRef = useRef(null);
+    const isTopInView = useInView(topRef, { amount: 0.4, once: false });
+    const isBottomInView = useInView(bottomRef, { amount: 0.4, once: false });
 
     const skillsData = {
         frontend: [
@@ -72,31 +77,38 @@ export default function Skills() {
             id="skills"
             className="w-full flex flex-col items-center justify-center px-6 md:px-20 text-black dark:text-white pb-20"
         >
-            <h2 className="text-4xl md:text-6xl font-bold mb-12 text-black dark:text-white drop-shadow-lg">
-                My Skills
-            </h2>
+            <motion.div
+                ref={topRef}
+                initial={{ opacity: 0, y: -50 }}
+                animate={isTopInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
+                transition={{ duration: 0.5 }}
+                className="flex flex-col justify-center items-center">
+                <h2 className="text-4xl md:text-6xl font-bold mb-12 text-black dark:text-white drop-shadow-lg">
+                    My Skills
+                </h2>
 
-            <div className="flex flex-wrap justify-center gap-4 mb-12">
-                {Object.keys(skillsData).map((tab) => (
-                    <button
-                        key={tab}
-                        onClick={() => setActiveTab(tab)}
-                        className={`px-6 py-3 rounded-xl font-semibold capitalize shadow-lg border border-black dark:border-white text-lg transition-all duration-300 ${activeTab === tab
-                            ? "bg-white dark:bg-black"
-                            : "bg-gray-200 dark:bg-neutral-900 hover:bg-white dark:hover:bg-black"
-                            }`}
-                    >
-                        {tab}
-                    </button>
-                ))}
-            </div>
+                <div className="flex flex-wrap justify-center gap-4 mb-12">
+                    {Object.keys(skillsData).map((tab) => (
+                        <button
+                            key={tab}
+                            onClick={() => setActiveTab(tab)}
+                            className={`px-6 py-3 rounded-xl font-semibold capitalize shadow-lg border border-black dark:border-white text-lg transition-all duration-300 ${activeTab === tab
+                                ? "bg-white dark:bg-black"
+                                : "bg-gray-200 dark:bg-neutral-900 hover:bg-white dark:hover:bg-black"
+                                }`}
+                        >
+                            {tab}
+                        </button>
+                    ))}
+                </div>
+            </motion.div>
 
             <AnimatePresence mode="wait">
                 <motion.div
+                    ref={bottomRef}
                     key={activeTab}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -30 }}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={isBottomInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                     transition={{ duration: 0.5 }}
                     className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10"
                 >

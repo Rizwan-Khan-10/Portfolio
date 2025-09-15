@@ -12,11 +12,31 @@ function Header() {
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#contact" },
-    { name: "Resume", href: "/resume.pdf", download: true },
+    { name: "Resume", href: "public/resume.pdf", download: true },
   ];
 
-  const handleLinkClick = () => {
+  const handleLinkClick = (e, href) => {
+    e.preventDefault();
     setIsOpen(false);
+
+    if (href.startsWith("#")) {
+      setTimeout(() => {
+        const target = document.querySelector(href);
+        if (target) {
+          const header = document.querySelector("header");
+          const headerHeight = header ? header.offsetHeight : 0;
+          const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+          const offsetPosition = elementPosition - headerHeight;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }
+      }, 300); 
+    } else {
+      window.open(href, "_blank");
+    }
   };
 
   return (
@@ -48,6 +68,7 @@ function Header() {
               <a
                 href={link.href}
                 className="hover:text-blue-500 transition-colors flex items-center"
+                onClick={(e) => handleLinkClick(e, link.href)}
                 {...(link.download && { download: true })}
               >
                 {link.name}
@@ -93,7 +114,7 @@ function Header() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden"
+            className="md:hidden"
           >
             <div className="container mx-auto pt-6 flex flex-col gap-6">
               {links.map((link, i) => (
@@ -106,7 +127,7 @@ function Header() {
                   <a
                     href={link.href}
                     className="hover:text-blue-500 transition-colors flex items-center text-lg font-semibold py-2"
-                    onClick={handleLinkClick}
+                    onClick={(e) => handleLinkClick(e, link.href)}
                     {...(link.download && { download: true })}
                   >
                     {link.name}
