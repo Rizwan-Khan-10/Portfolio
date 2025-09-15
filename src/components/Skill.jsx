@@ -1,32 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import vs from '../assets/vs.png';
-import {
-    FaHtml5,
-    FaCss3Alt,
-    FaJsSquare,
-    FaReact,
-    FaNodeJs,
-    FaGitAlt,
-    FaPython,
-    FaJava,
-    FaBootstrap,
-    FaGithub,
-} from "react-icons/fa";
-import {
-    SiMongodb,
-    SiPostgresql,
-    SiRedux,
-    SiTailwindcss,
-    SiCplusplus,
-    SiExpress,
-    SiFramer,
-    SiPostman,
-    SiVercel,
-    SiNetlify,
-    SiMysql,
-    SiC
-} from "react-icons/si";
+import { FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaNodeJs, FaGitAlt, FaPython, FaJava, FaBootstrap, FaGithub, } from "react-icons/fa";
+import { SiMongodb, SiPostgresql, SiRedux, SiTailwindcss, SiCplusplus, SiExpress, SiFramer, SiPostman, SiVercel, SiNetlify, SiMysql, SiC } from "react-icons/si";
 import useThemeStore from "../store/theme";
 
 export default function Skills() {
@@ -72,35 +48,29 @@ export default function Skills() {
             id="skills"
             className="w-full flex flex-col items-center justify-center px-6 md:px-20 text-black dark:text-white pb-20"
         >
-            <motion.div
-                initial={{ opacity: 0, y: -50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="flex flex-col justify-center items-center">
-                <h2 className="text-4xl md:text-6xl font-bold mb-12 text-black dark:text-white drop-shadow-lg">
-                    My Skills
-                </h2>
+            <h2 className="text-4xl md:text-6xl font-bold mb-12 text-black dark:text-white drop-shadow-lg">
+                My Skills
+            </h2>
 
-                <div className="flex flex-wrap justify-center gap-4 mb-12">
-                    {Object.keys(skillsData).map((tab) => (
-                        <button
-                            key={tab}
-                            onClick={() => setActiveTab(tab)}
-                            className={`px-6 py-3 rounded-xl font-semibold capitalize shadow-lg border border-black dark:border-white text-lg transition-all duration-300 ${activeTab === tab
-                                ? "bg-white dark:bg-black"
-                                : "bg-gray-200 dark:bg-neutral-900 hover:bg-white dark:hover:bg-black"
-                                }`}
-                        >
-                            {tab}
-                        </button>
-                    ))}
-                </div>
-            </motion.div>
+            <div className="flex flex-wrap justify-center gap-4 mb-12">
+                {Object.keys(skillsData).map((tab) => (
+                    <button
+                        key={tab}
+                        onClick={() => setActiveTab(tab)}
+                        className={`px-6 py-3 rounded-xl font-semibold capitalize shadow-lg border border-black dark:border-white text-lg transition-all duration-300 ${activeTab === tab
+                            ? "bg-white dark:bg-black"
+                            : "bg-gray-200 dark:bg-neutral-900 hover:bg-white dark:hover:bg-black"
+                            }`}
+                    >
+                        {tab}
+                    </button>
+                ))}
+            </div>
 
             <AnimatePresence mode="wait">
                 <motion.div
                     key={activeTab}
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                     className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10"
