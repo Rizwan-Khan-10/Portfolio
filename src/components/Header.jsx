@@ -12,32 +12,42 @@ function Header() {
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#contact" },
-    { name: "Resume", href: "public/resume.pdf", download: true },
+    { name: "Resume", href: "/resume.pdf", download: true },
   ];
 
-  const handleLinkClick = (e, href) => {
-    e.preventDefault();
-    setIsOpen(false);
+  const handleLinkClick = (e, href, download) => {
+  e.preventDefault();
+  setIsOpen(false);
 
-    if (href.startsWith("#")) {
-      setTimeout(() => {
-        const target = document.querySelector(href);
-        if (target) {
-          const header = document.querySelector("header");
-          const headerHeight = header ? header.offsetHeight : 0;
-          const elementPosition = target.getBoundingClientRect().top + window.scrollY;
-          const offsetPosition = elementPosition - headerHeight;
+  if (download) {
+    const link = document.createElement("a");
+    link.href = href;
+    link.setAttribute("download", "Rizwan-Khan-Resume.pdf");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    return;
+  }
 
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth",
-          });
-        }
-      }, 300); 
-    } else {
-      window.open(href, "_blank");
-    }
-  };
+  if (href.startsWith("#")) {
+    setTimeout(() => {
+      const target = document.querySelector(href);
+      if (target) {
+        const header = document.querySelector("header");
+        const headerHeight = header ? header.offsetHeight : 0;
+        const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - headerHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    }, 300);
+  } else {
+    window.open(href, "_blank");
+  }
+};
 
   return (
     <header
